@@ -1,5 +1,6 @@
 package com.camacode.jpa_depth_training;
 
+import com.camacode.jpa_depth_training.entity.Course;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class JpaDepthTrainingApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        logger.info("Course (id = 1) ->{}",courseRepository.findById(1));
+        Course course = courseRepository.findById(99);
+        logger.info("Course (id = 1) ->{}", course);
+        courseRepository.deleteById(99);
     }
 }

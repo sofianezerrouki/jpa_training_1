@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 @Repository
+@Transactional
 public class CourseRepository {
 
     @Autowired
@@ -16,8 +18,13 @@ public class CourseRepository {
         return entityManager.find(Course.class, idCourse);
     }
 
-    //save => insert or update
-//    public long save(Course course){
-//        return entityManager .
-//    }
+    // insert or update
+    public Course save(Course course){
+        return entityManager.merge(course);
+    }
+
+    public void deleteById(long id) {
+        Course course = entityManager.find(Course.class,id);
+        entityManager.remove(course);
+    }
 }
