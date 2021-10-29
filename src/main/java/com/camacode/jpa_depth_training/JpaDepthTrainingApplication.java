@@ -23,9 +23,11 @@ public class JpaDepthTrainingApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+          courseRepository.playWithEntityManager();
+//        Course course = courseRepository.findById(99);
+//        logger.info("Course (id = 1) ->{}", course);
+//        courseRepository.deleteById(99);
+//        courseRepository.save(new Course("Microservices in 30 steps"));
 
-        Course course = courseRepository.findById(99);
-        logger.info("Course (id = 1) ->{}", course);
-        courseRepository.deleteById(99);
     }
 }
